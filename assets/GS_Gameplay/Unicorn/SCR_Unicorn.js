@@ -1,6 +1,6 @@
-var GRAVITY = 1000;
+var GRAVITY = 3000;
 var DRAG = 300;
-var UNICORN_FART_POWER = 1000;
+var UNICORN_FART_POWER = 5000;
 
 cc.Class({
     extends: cc.Component,
