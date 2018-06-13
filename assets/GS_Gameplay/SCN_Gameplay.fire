@@ -283,7 +283,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Trail",
+    "_name": "PFB_Trail",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -297,7 +297,7 @@
       }
     ],
     "_prefab": null,
-    "_id": "327qvZ7P5BcY78PtTGgG+r",
+    "_id": "25sRUi6yxE1YVc9RzBG5Pd",
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -342,7 +342,7 @@
     },
     "_enabled": true,
     "_fadeTime": 1,
-    "_minSeg": 1,
+    "_minSeg": 50,
     "_stroke": 100,
     "_texture": {
       "__uuid__": "457efee3-4bda-4082-aaad-cd4514829ae3"
@@ -355,7 +355,7 @@
       "a": 255
     },
     "_fastMode": false,
-    "_N$preview": true
+    "_N$preview": false
   },
   {
     "__type__": "cc.Sprite",

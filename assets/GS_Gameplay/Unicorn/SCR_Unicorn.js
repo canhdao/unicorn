@@ -29,7 +29,6 @@ cc.Class({
 		this.speedY		= 0;
 		this.speedA		= 0;
 		
-		this.trailActive = false;
 		this.trailElapsedTime = 0;
 		
 		this.scrGameplay = this.scrGameplayNode.getComponent("SCR_Gameplay");
@@ -44,11 +43,8 @@ cc.Class({
 		this.speedY += this.scrGameplay.cos(this.a) * FART_MOVEMENT_POWER;
 		this.speedA = (0.5 + Math.random() * 0.5) * FART_ROTATION_POWER;
 		
-		this.trail.getComponent(cc.MotionStreak).reset();
 		this.trail.x = this.node.x;
 		this.trail.y = this.node.y;
-		this.trailActive = true;
-		this.trailElapsedTime = 0;
 	},
 
     update (dt) {
@@ -65,10 +61,6 @@ cc.Class({
 		
 		// Apply gravity
 		this.speedY -= GRAVITY * dt;
-		
-		if (this.trailActive && this.speedY < 0) {
-			this.trailActive = false;
-		}
 		
 		// Apply rotational drag
 		drag = ROTATION_DRAG * dt;
@@ -96,16 +88,14 @@ cc.Class({
 		this.node.y			= this.y - this.scrGameplay.cameraY;
 		this.node.rotation 	= this.a;
 		
-		if (this.trailActive) {
-			this.trail.x = this.node.x;
-			this.trail.y = this.node.y;
-			
-			this.trailElapsedTime += dt;
-			
-			if (this.trailElapsedTime < 1.0) {
-				var fadeTime = this.trailElapsedTime;
-				this.trail.getComponent(cc.MotionStreak)._motionStreak._fadeDelta = 1.0 / fadeTime;
-			}
+		this.trail.x = this.node.x;
+		this.trail.y = this.node.y;
+		
+		this.trailElapsedTime += dt;
+		
+		if (this.trailElapsedTime < 1.0) {
+			var fadeTime = this.trailElapsedTime;
+			this.trail.getComponent(cc.MotionStreak)._motionStreak._fadeDelta = 1.0 / fadeTime;
 		}
 		
 		// Game over
