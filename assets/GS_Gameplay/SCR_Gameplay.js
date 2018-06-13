@@ -50,8 +50,13 @@ cc.Class({
     // called every frame
     update: function (dt) {
 		if (this.sprUnicorn.getComponent("SCR_Unicorn").y > this.cameraY) {
-			var delta = this.sprUnicorn.getComponent("SCR_Unicorn").y - this.cameraY;
-			this.cameraY += delta * this.CAMERA_SPEED * dt;
+			var scrUnicorn = this.sprUnicorn.getComponent("SCR_Unicorn");
+			
+			var delta = scrUnicorn.y - this.cameraY;
+			var deltaCamera = delta * this.CAMERA_SPEED * dt;
+			this.cameraY += deltaCamera;
+			
+			scrUnicorn.moveTrail(deltaCamera);
 		}
 		
 		this.sprBackground1.node.y = -(this.cameraY % this.SCREEN_H);
